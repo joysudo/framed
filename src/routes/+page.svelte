@@ -14,9 +14,17 @@
 </script>
 
 <section class="hero">
-    {#each fruits as fruit}
-        <img id="layer-{fruit.id}" class="fruit-layer" class:hovered={activeFruit === fruit.id} src={fruit.src} alt={fruit.id}>
-    {/each}
+    <div class="images">
+        <img class="fruit-layer" src="/images/Background.png" alt=""/>
+        <img class="fruit-layer" src="/images/Floor.png" alt=""/>
+        <img class="fruit-layer" src="/images/Moss.png" alt=""/>
+        <img class="fruit-layer" src="/images/Wheat.png" alt=""/>
+        <img class="fruit-layer" src="/images/Leaves.png" alt=""/>
+        {#each fruits as fruit}
+            <img id="layer-{fruit.id}" class="fruit-layer" class:hovered={activeFruit === fruit.id} src={fruit.src} alt={fruit.id}>
+        {/each}
+        <img class="fruit-layer" src="/images/Stem.png" alt=""/>
+    </div>
     <svg class="hitbox-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         {#each fruits as fruit}
             <path d={fruit.path} class="hitbox" onmouseenter={() => activeFruit = fruit.id} onmouseleave={() => activeFruit = ""} role="presentation" />
@@ -77,6 +85,7 @@
         opacity: 0;
         z-index: 100;
         transition: opacity 0.3s ease, transform 0.3s ease;
+        color: whitesmoke;
     }
 
     .fruit-label.visible {
