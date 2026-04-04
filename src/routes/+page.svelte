@@ -1,4 +1,9 @@
 <script lang="ts">
+    import type { PageProps } from './$types';
+    import { enhance } from '$app/forms';
+    let { form }: PageProps = $props();
+    let rsvpForm: HTMLFormElement | undefined = $state();
+
     let activeFruit = $state("");
     const fruits = [
         { id: 'Squash', label: 'this is a squash', x: '65%', y: '20%', side: 'right', src: '/images/Squash.png', path: 'M1295 313L1303 322V300L1286 214.5L1241 175.5V151L1225 126L1192.5 130.5L1199 143H1216.5L1210.5 165.5L1165 162L1099.5 187.5L1020 250.5L1005.5 309L975 366L1037.5 381L1125 356L1196 366L1238 316.5L1295 313Z'},
@@ -16,7 +21,17 @@
 <div class="header">
     <img src="/images/font-preview.png" alt="Framed"/>
 </div>
-<section class="hero">
+<section class="hero" class:submitted={form?.success}>
+    {#if form?.success}
+        <p>success!</p>
+    {:else}
+        <form bind:this={rsvpForm} method="POST" use:enhance class="rsvp-form">
+            <input type="email" name="email" placeholder="Enter your email address" required />
+        </form>
+        {#if form?.message}
+            <p class="error">{form.message}</p>
+        {/if}
+    {/if}
     <div class="images">
         <img class="fruit-layer" src="/images/Background.png" alt=""/>
         <img class="fruit-layer" src="/images/Floor.png" alt=""/>
@@ -27,11 +42,16 @@
             <img id="layer-{fruit.id}" class="fruit-layer" class:hovered={activeFruit === fruit.id} src={fruit.src} alt={fruit.id}>
         {/each}
         <img class="fruit-layer" src="/images/Stem.png" alt=""/>
+        <img class="fruit-layer" src="/images/Untitled_Artwork-1.png" alt=""/>
+        <img class="fruit-layer rsvp-button" src="/images/Untitled_Artwork-2.png" alt=""/>
     </div>
     <svg class="hitbox-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         {#each fruits as fruit}
             <path d={fruit.path} class="hitbox" onmouseenter={() => activeFruit = fruit.id} onmouseleave={() => activeFruit = ""} role="presentation" />
         {/each}
+        <path d="M1126 972L1131 909.5L1238.5 915L1240.5 939L1258 972L1255 996L1186 1008.5L1131 1023.5L1126 972Z" class="hitbox" role="button" onclick={() => {
+            if (rsvpForm?.checkValidity()) {rsvpForm?.requestSubmit();} else {rsvpForm?.reportValidity();}
+        }}/>
     </svg>
     {#each fruits as fruit}
         <div class="fruit-label label-{fruit.side}" class:visible={activeFruit === fruit.id} style="top: {fruit.y}; {fruit.side === 'left' ? `left: 0; width: ${fruit.x};` : `left: ${fruit.x}; width: calc(100% - ${fruit.x});`}">
@@ -47,6 +67,7 @@
         </div>
     {/each}
 </section>
+
 
 <style>
     :global(body) {
@@ -94,6 +115,7 @@
     }
 
     .hitbox-svg {
+        pointer-events: none;
         position: absolute;
         top: 0;
         left: 0;
@@ -102,6 +124,11 @@
         fill: transparent;
     }
 
+    .hitbox {
+        pointer-events: auto;
+        fill: white;
+        opacity: 0;
+    }
     .fruit-label {
         position: absolute;
         display: flex;
@@ -137,9 +164,44 @@
         height: 6px;
         border-radius: 50%;
         background-color: white;
+        box-shadow: 0 0 0 2px rgba(225, 225, 225, 0.3);
     }
 
     .label-text {
         max-width: 50%;
+    }
+
+    .rsvp-form {
+        position: absolute;
+        width: calc(400/1920*100%);
+        height: calc(100/1080*100%);
+        left: calc(725/1920*100%);
+        top: calc(915/1080*100%);
+        z-index: 100;
+    }
+
+    .rsvp-form input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+    }
+
+    .rsvp-button {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+    
+    .hero:not(.submitted):has(.hitbox:hover) .rsvp-button {
+        filter: brightness(0.9);
+    }
+
+    .hero:not(.submitted):has(.hitbox:active) .rsvp-button {
+        filter: brightness(0.7);
+    }
+
+    .hero.submitted .rsvp-button {
+        filter: grayscale(0.5);
     }
 </style>
