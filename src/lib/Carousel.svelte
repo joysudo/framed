@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { fade, fly } from 'svelte/transition';
+
     interface Pathway {
         id: 'Websites' | 'Apps' | 'Games';
         heading: string;
@@ -37,15 +39,17 @@
 
 <main class="container">
     <div class="this-is-just-a-wrapper-so-that-i-can-create-a-clip-path-shadow">
-        <section class="project-bubble">
-            <h2>{current.heading}</h2>
-            <div class="list">
-                <img src={current.images[0]} alt="" />
-                <p>{current.captions[0]}</p>
-                <img src={current.images[1]} alt="" />
-                <p>{current.captions[1]}</p>
-            </div>
-        </section>
+        {#key selectedIndex}
+            <section class="project-bubble" in:fly={{ x: -20, duration: 400, delay: 200 }} out:fade={{ duration: 200 }}>
+                <h2>{current.heading}</h2>
+                <div class="list">
+                    <img src={current.images[0]} alt="" />
+                    <p>{current.captions[0]}</p>
+                    <img src={current.images[1]} alt="" />
+                    <p>{current.captions[1]}</p>
+                </div>
+            </section>
+        {/key}
     </div>
     <div>
         <div>
@@ -90,15 +94,19 @@
         gap: 2vw;
     }
 
+    .this-is-just-a-wrapper-so-that-i-can-create-a-clip-path-shadow {
+        filter: drop-shadow(-3px 3px 0 color-mix(in srgb, var(--dark-brown), transparent 60%));
+        display: grid;
+        place-items: center;
+    }
+
     .project-bubble {
         max-width: 30vw;
         background-color: #fcf8f2;
         padding: 2vw;
         clip-path: url(#responsiveClip);
-    }
-
-    .this-is-just-a-wrapper-so-that-i-can-create-a-clip-path-shadow {
-        filter: drop-shadow(-3px 3px 1px rgba(0, 0, 0, 0.3));
+        grid-area: 1/1;
+        transform: rotate(1deg);
     }
 
     .project-bubble img {
@@ -145,12 +153,13 @@
         font-style: normal;
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         filter: opacity(0.6);
-        transform: scale(0.5) translateY(-5vw);
+        transform: scale(0.8) translateY(-4vw);
     }
 
     .card.active h2 {
         filter: opacity(1);
         transform: scale(1);
+        font-weight: bold;
     }
 
     .card img {
