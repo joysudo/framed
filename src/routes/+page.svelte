@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Carousel from '$lib/Carousel.svelte';
 
     import type { PageProps } from './$types';
     import { enhance } from '$app/forms';
@@ -79,6 +80,7 @@
     {/each}
 </section>
 <p>sdfsdfds</p>
+<Carousel></Carousel>
 </div>
 
 
@@ -265,7 +267,7 @@
         height: 100%;
         background: transparent;
         border: none;
-        font-size: 1.5rem;
+        font-size: 2.0vw;
         font-style: italic;
         font-family: "EB Garamond", serif;
     }
