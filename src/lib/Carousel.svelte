@@ -184,4 +184,16 @@
         filter: brightness(0.9);
     }
 
+    @media (max-width: 768px) {
+        .project-bubble {
+            max-width: 100vw;
+            position: static;
+        }
+        .container {
+            flex-direction: column-reverse;
+            margin-top: 10vw;
+            margin-bottom: 5vw;
+        }
+    }
+
 </style>
