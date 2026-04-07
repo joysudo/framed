@@ -7,21 +7,18 @@
 
     let activeFruit = $state("");
     const fruits = [
-        { id: 'Squash', label: 'this is a squash', x: '65%', y: '20%', side: 'right', src: '/images/Squash.png', path: 'M1295 313L1303 322V300L1286 214.5L1241 175.5V151L1225 126L1192.5 130.5L1199 143H1216.5L1210.5 165.5L1165 162L1099.5 187.5L1020 250.5L1005.5 309L975 366L1037.5 381L1125 356L1196 366L1238 316.5L1295 313Z'},
-        { id: 'Corn', label: 'corny ahh', x: '70%', y: '35%', side: 'right', src: '/images/Corn.png', path: 'M1038.5 382L1065 388.5L1110.5 454.5V539L1078.5 605L1176.5 545.5L1183.5 513L1218.5 501L1249 513L1287.5 492.5L1274 477.5L1287.5 435.5H1332.5L1374.5 455.5L1473.5 421.5L1529 367L1577 351L1524 341L1488 381L1473.5 368.5H1431L1382 354L1321 348.5L1293 314.5L1239 319L1195.5 368.5L1123 359.5L1038.5 382Z'},
-        { id: 'Green Grapes', label: 'green green dress', x: '30%', y: '30%', side: 'left', src: '/images/Green Grapes.png', path: 'M845.5 421L935.5 367.5V310.5L907.5 200.5H852L835.5 250.5L816.5 246L791.5 208L735.5 214L725.5 183.5H667H625L575.5 232L563.5 261L581 295.5V321.5L558 345V385.5L593.5 396V418.5L492 513.5L481 539L454.5 552L447 585L471 604L481 636.5L465.5 641L454.5 664L460 684.5L558 646L606.5 657.5L633 691.5L668.5 673L672.5 652.5L715.5 616.5L706.5 592.5L735.5 589.5L758 604L816.5 564.5L809 513.5L845.5 421Z'},
-        { id: 'Peaches', label: 'arizona iced tea', x: '40%', y: '40%', side: 'left', src: '/images/Peaches.png', path: 'M1107.5 539L1075.5 605L1107.5 616L1149 659.5L1168.5 735L1149 810.5L1086.5 845.5L1035 876L968 860L900.5 802L862 826.5H802.5L730 810.5L707.5 771.5L661 735L680.5 648L719 616L823.5 582.5L812 513L852 421.5L943.5 368.5L968 391L982 368.5L1062.5 391L1107.5 455.5V539Z'},
-        { id: 'Purple Grapes', label: 'suni, whats ur favorite color', x: '80%', y: '60%', side: 'right', src: '/images/Purple Grapes.png', path: 'M1511.5 639L1514.5 678L1495.5 703L1463.5 717L1430 698L1402 714L1394.5 754.5L1364 741.5L1330 764.5V793.5L1364 802.5L1410 767.5L1402 785.5V819L1433.5 823L1463.5 805.5L1490 827L1519 819L1531 793.5L1591.5 819H1637L1658.5 775.5L1623.5 736.5L1633.5 714L1623.5 671.5L1577 635L1546.5 619L1511.5 639Z'},
-        { id: 'Red Grapes', label: 'reddy or not', x: '70%', y: '60%', side: 'right', src: '/images/Red Grapes.png', path: 'M1330.5 440L1364.5 455V486L1388 493.5L1415 486L1474 519.5L1477 564L1437.5 582L1430.5 663.5H1454.5L1477 689L1462 713L1430.5 694L1399.5 713L1394 750.5L1364.5 738L1330.5 758L1307.5 791.5L1197 770L1156 791.5L1171.5 731L1151.5 657L1121 625.5L1131.5 578.5L1179.5 548.5L1186 517.5L1219 504.5L1250 517.5L1294 493.5L1278.5 474.5L1290.5 440H1330.5Z'},
-        { id: 'Small Pear', label: 'the perfect pear', x: '10%', y: '70%', side: 'left', src: '/images/Small Pear.png', path: 'M291.5 634.5L289 614L280 636.5L236.5 673L216 723L236.5 784.5L289 816L355.5 798L389.5 738.5L381 702L345.5 655.5L291.5 634.5Z'},
-        { id: 'Big Pear', label: 'mmm', x: '20%', y: '75%', side: 'left', src: '/images/Big Pear.png', path: 'M602 736H639L635 696L602 660L556.5 649.5L461 688.5L424.5 736L417 805.5L485 853L564.5 861.5L567 784.5L602 736Z'},
-        { id: 'Rambutan', label: 'i dont think this is actually a rambutan but thats the only spiky fruit i know', x: '30%', y: '70%', side: 'left', src: '/images/Rambutan.png', path: 'M708.5 775.5L732 832L696.5 877.5L631 892.5L568.5 864V785.5L602.5 739.5H658.5L708.5 775.5Z'},
+        { id: 'Squash', label: 'this is a squash', x: '65%', y: '20%', side: 'right', src: '/images/still life/Squash.png', path: 'M1295 313L1303 322V300L1286 214.5L1241 175.5V151L1225 126L1192.5 130.5L1199 143H1216.5L1210.5 165.5L1165 162L1099.5 187.5L1020 250.5L1005.5 309L975 366L1037.5 381L1125 356L1196 366L1238 316.5L1295 313Z'},
+        { id: 'Corn', label: 'corny ahh', x: '70%', y: '35%', side: 'right', src: '/images/still life/Corn.png', path: 'M1038.5 382L1065 388.5L1110.5 454.5V539L1078.5 605L1176.5 545.5L1183.5 513L1218.5 501L1249 513L1287.5 492.5L1274 477.5L1287.5 435.5H1332.5L1374.5 455.5L1473.5 421.5L1529 367L1577 351L1524 341L1488 381L1473.5 368.5H1431L1382 354L1321 348.5L1293 314.5L1239 319L1195.5 368.5L1123 359.5L1038.5 382Z'},
+        { id: 'Green Grapes', label: 'green green dress', x: '30%', y: '30%', side: 'left', src: '/images/still life/Green Grapes.png', path: 'M845.5 421L935.5 367.5V310.5L907.5 200.5H852L835.5 250.5L816.5 246L791.5 208L735.5 214L725.5 183.5H667H625L575.5 232L563.5 261L581 295.5V321.5L558 345V385.5L593.5 396V418.5L492 513.5L481 539L454.5 552L447 585L471 604L481 636.5L465.5 641L454.5 664L460 684.5L558 646L606.5 657.5L633 691.5L668.5 673L672.5 652.5L715.5 616.5L706.5 592.5L735.5 589.5L758 604L816.5 564.5L809 513.5L845.5 421Z'},
+        { id: 'Peaches', label: 'arizona iced tea', x: '40%', y: '40%', side: 'left', src: '/images/still life/Peaches.png', path: 'M1107.5 539L1075.5 605L1107.5 616L1149 659.5L1168.5 735L1149 810.5L1086.5 845.5L1035 876L968 860L900.5 802L862 826.5H802.5L730 810.5L707.5 771.5L661 735L680.5 648L719 616L823.5 582.5L812 513L852 421.5L943.5 368.5L968 391L982 368.5L1062.5 391L1107.5 455.5V539Z'},
+        { id: 'Purple Grapes', label: 'suni, whats ur favorite color', x: '80%', y: '60%', side: 'right', src: '/images/still life/Purple Grapes.png', path: 'M1511.5 639L1514.5 678L1495.5 703L1463.5 717L1430 698L1402 714L1394.5 754.5L1364 741.5L1330 764.5V793.5L1364 802.5L1410 767.5L1402 785.5V819L1433.5 823L1463.5 805.5L1490 827L1519 819L1531 793.5L1591.5 819H1637L1658.5 775.5L1623.5 736.5L1633.5 714L1623.5 671.5L1577 635L1546.5 619L1511.5 639Z'},
+        { id: 'Red Grapes', label: 'reddy or not', x: '70%', y: '60%', side: 'right', src: '/images/still life/Red Grapes.png', path: 'M1330.5 440L1364.5 455V486L1388 493.5L1415 486L1474 519.5L1477 564L1437.5 582L1430.5 663.5H1454.5L1477 689L1462 713L1430.5 694L1399.5 713L1394 750.5L1364.5 738L1330.5 758L1307.5 791.5L1197 770L1156 791.5L1171.5 731L1151.5 657L1121 625.5L1131.5 578.5L1179.5 548.5L1186 517.5L1219 504.5L1250 517.5L1294 493.5L1278.5 474.5L1290.5 440H1330.5Z'},
+        { id: 'Small Pear', label: 'the perfect pear', x: '10%', y: '70%', side: 'left', src: '/images/still life/Small Pear.png', path: 'M291.5 634.5L289 614L280 636.5L236.5 673L216 723L236.5 784.5L289 816L355.5 798L389.5 738.5L381 702L345.5 655.5L291.5 634.5Z'},
+        { id: 'Big Pear', label: 'mmm', x: '20%', y: '75%', side: 'left', src: '/images/still life/Big Pear.png', path: 'M602 736H639L635 696L602 660L556.5 649.5L461 688.5L424.5 736L417 805.5L485 853L564.5 861.5L567 784.5L602 736Z'},
+        { id: 'Rambutan', label: 'i dont think this is actually a rambutan but thats the only spiky fruit i know', x: '30%', y: '70%', side: 'left', src: '/images/still life/Rambutan.png', path: 'M708.5 775.5L732 832L696.5 877.5L631 892.5L568.5 864V785.5L602.5 739.5H658.5L708.5 775.5Z'},
     ]
 </script>
 
-<div class="header">
-    <img src="/images/font-preview.png" alt="Framed"/>
-</div>
 <section class="hero" class:submitted={form?.success}>
     {#if form?.success}
         <p class="form-message">Success! You have RSVPed for <b>Framed</b>.</p>
@@ -34,15 +31,15 @@
         {/if}
     {/if}
     <div class="images">
-        <img class="fruit-layer" src="/images/Background.png" alt=""/>
-        <img class="fruit-layer" src="/images/Floor.png" alt=""/>
-        <img class="fruit-layer" src="/images/Moss.png" alt=""/>
-        <img class="fruit-layer" src="/images/Wheat.png" alt=""/>
-        <img class="fruit-layer" src="/images/Leaves.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Background.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Floor.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Moss.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Wheat.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Leaves.png" alt=""/>
         {#each fruits as fruit}
             <img id="layer-{fruit.id}" class="fruit-layer" class:hovered={activeFruit === fruit.id} src={fruit.src} alt={fruit.id}>
         {/each}
-        <img class="fruit-layer" src="/images/Stem.png" alt=""/>
+        <img class="fruit-layer" src="/images/still life/Stem.png" alt=""/>
         <img class="fruit-layer" class:submitted={form?.success} src="/images/Untitled_Artwork-1.png" alt=""/>
         <img class="fruit-layer rsvp-button" class:submitting={submitting} class:submitted={form?.success} src="/images/Untitled_Artwork-2.png" alt=""/>
     </div>
@@ -81,7 +78,7 @@
         font-family: "EB Garamond", serif;
     }
 
-    .header {
+    /* .header {
         width: 100%;
         padding-top: 4rem;
         display: flex;
@@ -92,11 +89,7 @@
         z-index: 100;
         left: 0;
         top: 0;
-    }
-
-    .header img {
-        width: 40%;
-    }
+    } */
 
     .hero {
         position: relative;
