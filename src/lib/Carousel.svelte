@@ -145,7 +145,7 @@
     .card {
         display: flex;
         flex-direction: column;
-        font-family: 'EG Garamond', serif;
+        font-family: 'EB Garamond', serif;
         background-color: transparent !important;
     }
 
