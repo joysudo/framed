@@ -3,6 +3,7 @@
     import { enhance } from '$app/forms';
     let { form }: PageProps = $props();
     let rsvpForm: HTMLFormElement | undefined = $state();
+    let submitting = $state(false) // for graying out the submit button immediately onenter/press
 
     let activeFruit = $state("");
     const fruits = [
@@ -23,13 +24,13 @@
 </div>
 <section class="hero" class:submitted={form?.success}>
     {#if form?.success}
-        <p>success!</p>
+        <p class="form-message">Success! You have RSVPed for <b>Framed</b>.</p>
     {:else}
-        <form bind:this={rsvpForm} method="POST" use:enhance class="rsvp-form">
+        <form bind:this={rsvpForm} method="POST" use:enhance={() => { submitting = true; }} class="rsvp-form">
             <input type="email" name="email" placeholder="Enter your email address" required />
         </form>
         {#if form?.message}
-            <p class="error">{form.message}</p>
+            <p class="form-message error">{form.message}</p>
         {/if}
     {/if}
     <div class="images">
@@ -42,16 +43,18 @@
             <img id="layer-{fruit.id}" class="fruit-layer" class:hovered={activeFruit === fruit.id} src={fruit.src} alt={fruit.id}>
         {/each}
         <img class="fruit-layer" src="/images/Stem.png" alt=""/>
-        <img class="fruit-layer" src="/images/Untitled_Artwork-1.png" alt=""/>
-        <img class="fruit-layer rsvp-button" src="/images/Untitled_Artwork-2.png" alt=""/>
+        <img class="fruit-layer" class:submitted={form?.success} src="/images/Untitled_Artwork-1.png" alt=""/>
+        <img class="fruit-layer rsvp-button" class:submitting={submitting} class:submitted={form?.success} src="/images/Untitled_Artwork-2.png" alt=""/>
     </div>
     <svg class="hitbox-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         {#each fruits as fruit}
             <path d={fruit.path} class="hitbox" onmouseenter={() => activeFruit = fruit.id} onmouseleave={() => activeFruit = ""} role="presentation" />
         {/each}
-        <path d="M1126 972L1131 909.5L1238.5 915L1240.5 939L1258 972L1255 996L1186 1008.5L1131 1023.5L1126 972Z" class="hitbox" role="button" onclick={() => {
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <path d="M1126 972L1131 909.5L1238.5 915L1240.5 939L1258 972L1255 996L1186 1008.5L1131 1023.5L1126 972Z" class="hitbox" role="button" tabindex="0" aria-label="submit RSVP" onclick={() => {
             if (rsvpForm?.checkValidity()) {rsvpForm?.requestSubmit();} else {rsvpForm?.reportValidity();}
-        }}/>
+        }}
+        />
     </svg>
     {#each fruits as fruit}
         <div class="fruit-label label-{fruit.side}" class:visible={activeFruit === fruit.id} style="top: {fruit.y}; {fruit.side === 'left' ? `left: 0; width: ${fruit.x};` : `left: ${fruit.x}; width: calc(100% - ${fruit.x});`}">
@@ -67,13 +70,17 @@
         </div>
     {/each}
 </section>
-
+<p>sdfsdfds</p>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
     :global(body) {
         margin: 0;
         background-color: chocolate;
+        font-family: "EB Garamond", serif;
     }
+
     .header {
         width: 100%;
         padding-top: 4rem;
@@ -90,6 +97,7 @@
     .header img {
         width: 40%;
     }
+
     .hero {
         position: relative;
         width: min(100vw, 177.78vh);
@@ -107,6 +115,13 @@
         object-fit: contain;
         pointer-events: none;
         transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .fruit-layer.submitted {
+        transform: translateY(-10rem);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.6s ease, opacity 0.6s ease;
     }
 
     .fruit-layer.hovered {
@@ -129,6 +144,7 @@
         fill: white;
         opacity: 0;
     }
+
     .fruit-label {
         position: absolute;
         display: flex;
@@ -171,6 +187,7 @@
         max-width: 50%;
     }
 
+
     .rsvp-form {
         position: absolute;
         width: calc(400/1920*100%);
@@ -186,6 +203,8 @@
         background: transparent;
         border: none;
         font-size: 1.5rem;
+        font-style: italic;
+        font-family: "EB Garamond", serif;
     }
 
     .rsvp-button {
@@ -201,7 +220,22 @@
         filter: brightness(0.7);
     }
 
-    .hero.submitted .rsvp-button {
+    .rsvp-button.submitting {
         filter: grayscale(0.5);
+        pointer-events: none;
+    }
+
+    .form-message {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: calc(915/1080*100%);
+        z-index: 10;
+        color: white;
+        font-style: italic;
+    }
+    
+    .form-message.error {
+        bottom: calc(915/1080*100%) !important;
     }
 </style>
