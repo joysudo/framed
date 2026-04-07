@@ -41,8 +41,23 @@
     <img class="hero-gargoyle gargoyle-left" src="/images/hero/gargoyle-left.png" alt=""/>
     <img class="hero-gargoyle gargoyle-right" src="/images/hero/gargoyle-right.png" alt=""/>
 </section>
+<section class="informational">
+    <div>
+        <h1>What is Framed?</h1>
+        <p>Most people think art and code live on different planets. We’re here to prove they’re two sides of the same coin: creation.</p>
+        <p>Framed is a new initiative designed to bridge the gap between art and tech. In collaboration with an established museum, we provide tools and stipends to teen artists who want to create cool project and aspiring developers who want to build beautiful things.</p>
+        <h1>What is Hack Club?</h1>
+        <p>Hack Club is a 501(c)(3) high school nonprofit and a global community of over 100,000 teen makers. We are a public charity entirely funded by people who believe that teenagers should have the tools to build the future.</p>
+        <p>Everything we do is open-source and transparent. You can view past Hack Club programs like this one at <a href="hackclub.org">hackclub.org</a>.</p>
+    </div>
+    <img src="/images/torn-paper.png" alt=""/>
+</section>
 <Carousel/>
-<StillLife/>
+<footer>
+    <StillLife/>
+    <h2>Made with ❤︎⁠ by Joy Su for Hack Club.</h2>
+    <p>Teen aged 13-18? Join <a href="https://hackclub.org">Hack Club</a> here.</p>
+</footer>
 </div>
 
 
@@ -59,6 +74,11 @@
         color: var(--dark-brown);
         background-color: var(--cream);
         font-family: "EB Garamond", serif;
+    }
+
+    
+    a {
+        color: chocolate;
     }
 
     .parallax-wrapper {
@@ -233,5 +253,35 @@
     
     .form-message.error {
         bottom: calc(915/1080*100%) !important;
+    }
+
+    .informational {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: 100vh;
+        padding-left: 5vw;
+    }
+
+    .informational img {
+        max-width: 40vw;
+    }
+
+    .informational p {
+        font-size: large;
+    }
+
+    footer {
+        background-color: var(--dark-brown);
+        min-height: calc(100vw*9/16 + 10rem);
+        color: white;
+        font-style: italic;
+        text-align: center;
+        margin: 0;
+        gap: 0;
+    }
+
+    footer p {
+        margin: 0;
     }
 </style>
