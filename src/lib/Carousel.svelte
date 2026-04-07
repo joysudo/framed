@@ -13,23 +13,23 @@
         {
             id: 'Apps',
             heading: "App Development",
-            description: "Build websites with custom to-do lists, galleries of your projects, keep track of your favorite restaurants, and do anything else you might be able to imagine.",
-            images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVSX2ePH_Ni4g0vaM3td4po-87fE8yrdfSJA&s", "https://img.itch.zone/aW1hZ2UvMzg1NjIyMy8yMzAwNTQ3MC5wbmc=/original/fR9eCD.png"],
-            captions: ["Example example 1", "Example example 2"]
+            description: "Build mobile and desktop apps that you can actually deploy on a store.",
+            images: ["/images/pathways/logic-lab.png", "/images/pathways/kapong.png"],
+            captions: ["Logic Lab, an educational platform for learning logical fallacies.", "Kapong, a pong remix."]
         },
         {
             id: 'Websites',
             heading: "Web Development",
             description: "Build websites with custom to-do lists, galleries of your projects, keep track of your favorite restaurants, and do anything else you might be able to imagine.",
-            images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVSX2ePH_Ni4g0vaM3td4po-87fE8yrdfSJA&s", "https://img.itch.zone/aW1hZ2UvMzg1NjIyMy8yMzAwNTQ3MC5wbmc=/original/fR9eCD.png"],
-            captions: ["Example example 1", "Example example 2"]
+            images: ["/images/pathways/prototype.png", "/images/pathways/projects-spa.png"],
+            captions: ["Prototype, a website to recap an awesome event.", "A projects portfolio to send to employers."]
         },
         {
             id: 'Games',
             heading: "Game Development",
-            description: "Build websites with custom to-do lists, galleries of your projects, keep track of your favorite restaurants, and do anything else you might be able to imagine.",
-            images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVSX2ePH_Ni4g0vaM3td4po-87fE8yrdfSJA&s", "https://img.itch.zone/aW1hZ2UvMzg1NjIyMy8yMzAwNTQ3MC5wbmc=/original/fR9eCD.png"],
-            captions: ["Example example 1", "Example example 2"]
+            description: "Build video games that are addictive, silly, moving, or just plainly fun.",
+            images: ["/images/pathways/hachiware-game.png", "/images/pathways/crunch-time.png"],
+            captions: ["Hachiware game, a dino game remake with new beloved characters.", "Crunch Time, a gacha game where aliens gather energy drinks."]
         }
     ]
 
@@ -41,12 +41,13 @@
     <div class="this-is-just-a-wrapper-so-that-i-can-create-a-clip-path-shadow">
         {#key selectedIndex}
             <section class="project-bubble" in:fly={{ x: -20, duration: 400, delay: 200 }} out:fade={{ duration: 200 }}>
-                <h2>{current.heading}</h2>
+                <h2><b>{current.heading}</b></h2>
+                <p>{current.description}</p>
                 <div class="list">
                     <img src={current.images[0]} alt="" />
-                    <p>{current.captions[0]}</p>
+                    <p><i>{current.captions[0]}</i></p>
                     <img src={current.images[1]} alt="" />
-                    <p>{current.captions[1]}</p>
+                    <p><i>{current.captions[1]}</i></p>
                 </div>
             </section>
         {/key}
