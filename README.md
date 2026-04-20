@@ -1,42 +1,7 @@
-# sv
+# Framed!
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+<img width="1920" height="1200" alt="Screenshot 2026-04-19 214716" src="https://github.com/user-attachments/assets/1ec57913-3af3-4964-ba43-da571075e0ab" />
 
-## Creating a project
+Website for a museum-focused coding initiative (temporarily unpolished).
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.13.2 create --template minimal --types ts --install npm framed
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Placeholder artworks self-drawn. Built using Sveltekit. Styled with vanilla CSS. Access on web at [framed-rust.vercel.app](https://framed-rust.vercel.app).
